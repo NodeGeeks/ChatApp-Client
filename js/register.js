@@ -1,30 +1,30 @@
-(function () {
+var registerForm = document.getElementById('registerForm');
 
-    var registerForm = document.getElementById('registerForm');
+registerForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    var username = registerForm.username.value,
+        firstName = registerForm.firstName.value,
+        lastName = registerForm.lastName.value,
+        email = registerForm.email.value,
+        //birthday = registerForm.birthday.value,
+        password = registerForm.password.value;
 
-    registerForm.addEventListener('submit', function(e){
-        e.preventDefault();
-        var username = registerForm.username.value,
-            firstName = registerForm.firstName.value,
-            lastName = registerForm.lastName.value,
-            email = registerForm.email.value,
-            //birthday = registerForm.birthday.value,
-            password = registerForm.password.value;
+    register(firstName, lastName, username, email, password);
+});
 
-        register(firstName, lastName, username, email, password);
+function register(id, firstName, lastName, username, email, password) {
+    var registerData = {
+        firstName: firstName,
+        lastName: lastName,
+        username: username,
+        email: email,
+        password: password
+    };
+    $.post( 'http://localhost/user/register', registerData).done(function( response ) {
+        var user = new User(data[0].id, data[0].firstName, data[0].lastName, data[0].username, data[0].email, true);
+        localStorage.setItem('user', JSON.stringify(user));
+        console.log(user);
+
+        window.location = 'messageboard.html';
     });
-
-    function register(firstName, lastName, username, email, password) {
-        var registerData = {
-            firstName: firstName,
-            lastName: lastName,
-            username: username,
-            email: email,
-            password: password
-        };
-        $.post( 'http://localhost:1337/user/register', registerData).done(function( data ) {
-            console.log( "Data Loaded: " + data );
-        });
-    }
-
-}());
+}

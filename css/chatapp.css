@@ -1,0 +1,16 @@
+.usersList, .messages {
+    min-height: 100%;
+    border: 1px black solid;
+}
+
+.tallify {
+    height: 100%;
+}
+
+.message-input {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    margin-left: -15px;
+    border: 1px black solid;
+}

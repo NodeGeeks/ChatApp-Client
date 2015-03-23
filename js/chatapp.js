@@ -1,26 +1,36 @@
-(function () {
+var User = function(firstName, lastName, username, email, birthday, gender, isLoggedIn) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.username = username;
+    this.email = email;
+    this.gender = gender;
+    this.isLoggedIn = isLoggedIn;
+};
 
-    var loginForm = document.getElementById('loginForm');
+getMessages();
 
-    loginForm.addEventListener('submit', function(e){
-        e.preventDefault();
-        var email = loginForm.email.value,
-            password = loginForm.password.value;
+getUsers();
 
-        login(email, password)
+function getMessages() {
+    $.get('http://localhost/message').done(function (response) {
+        console.log(response);
     });
+}
+function getUsers() {
+    $.get('http://localhost/user').done(function (response) {
+        console.log(response);
+    });
+}
 
-    function login(email, password) {
-        var loginData = {
-            email: email,
-            password: password
-        };
-        $.post( 'http://localhost:1337/user/login', loginData).done(function( data ) {
-            console.log( 'Data Loaded: ' + data );
-            var user = new User(data[0].firstName, data[0].lastName, data[0].username, data[0].email, true);
-
-            localStorage.setItem('user', JSON.stringify(user))
-        });
-    }
-
-}());
+function sendMessage() {
+    var messageText = document.getElementById('messageText').value;
+    var userObject = JSON.parse(localStorage.getItem('user'));
+    debugger
+    var messageObject = {
+        message: messageText,
+        userId: userObject.id
+    };
+    $.post('http://localhost/message/send', messageObject).done(function (response) {
+        console.log(response);
+    });
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html class="tallify">
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/chatapp.css"/>
+    <title></title>
+</head>
+<body class="tallify">
+<div class="container tallify">
+    <div class="row clearfix tallify">
+        <div class="col-md-12 column tallify">
+            <div class="row clearfix tallify">
+                <div class="col-md-2 column usersList">
+                    <ol id="usersList">
+
+                    </ol>
+                </div>
+                <div class="col-md-10 column messages">
+                    <ol id="messages">
+
+                    </ol>
+                    <div class="message-input">
+                        <textarea class="form-control pull-left" id="messageText"></textarea>
+                        <button class="btn btn-primary pull-right" onclick="sendMessage()">Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/chatapp.js"></script>
+</body>
+</html>
