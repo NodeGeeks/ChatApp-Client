@@ -14,7 +14,7 @@ function login(email, password) {
         email: email,
         password: password
     };
-    $.post( 'http://localhost/user/login', loginData).done(function( response ) {
+    $.post( 'http://50.255.225.218/user/login', loginData).done(function( response ) {
         var user = new User(response[0].id, response[0].firstName, response[0].lastName, response[0].username, response[0].email, true);
         localStorage.setItem('user', JSON.stringify(user));
         console.log(user);

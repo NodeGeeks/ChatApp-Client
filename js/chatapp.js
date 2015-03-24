@@ -12,12 +12,12 @@ getMessages();
 getUsers();
 
 function getMessages() {
-    $.get('http://localhost/message').done(function (response) {
+    $.get('http://50.255.225.218/message').done(function (response) {
         console.log(response);
     });
 }
 function getUsers() {
-    $.get('http://localhost/user').done(function (response) {
+    $.get('http://50.255.225.218/user').done(function (response) {
         console.log(response);
     });
 }
@@ -30,7 +30,7 @@ function sendMessage() {
         message: messageText,
         userId: userObject.id
     };
-    $.post('http://localhost/message/send', messageObject).done(function (response) {
+    $.post('http://50.255.225.218/message/send', messageObject).done(function (response) {
         console.log(response);
     });
 }
